@@ -1,64 +1,28 @@
 <template>
     <transition name="slide">
         <div class="main">
-            <AddTodo @addTodo="saveTodo"/>
-            <Todos>
-                <TodoItem
-                        v-for="todo in todos"
-                        :key="todo.id"
-                        :item="todo"
-                        @changeCompleted="changeCompleted"
-                />
-            </Todos>
+            <AddTodo @addTodo="addTodo"/>
+            <Todos/>
         </div>
     </transition>
 </template>
 
 <script>
-    import AddTodo from "./AddTodo";
-    import Todos from "./Todos";
-    import TodoItem from "./TodoItem";
+  import AddTodo from "./AddTodo";
+  import Todos from "./Todos";
 
-    export default {
-        name: "Main",
-        components: {
-            AddTodo,
-            Todos,
-            TodoItem
-        },
-        data() {
-            return {
-                todos: [
-                    {
-                        id: 1,
-                        item: "Code something",
-                        completed: false
-                    },
-                    {
-                        id: 2,
-                        item: "Go to meeting",
-                        completed: true
-                    },
-                    {
-                        id: 3,
-                        item: "Sleep",
-                        completed: false
-                    }
-                ]
-            };
-        },
-        methods: {
-            saveTodo(item) {
-                this.todos = [...this.todos, item];
-            },
-            changeCompleted(id) {
-                this.todos = this.todos.map(item => {
-                    if (item.id === id) item.completed = !item.completed;
-                    return item;
-                });
-            }
-        }
-    };
+  import {mapActions} from "vuex";
+
+  export default {
+    name: "Main",
+    components: {
+      AddTodo,
+      Todos
+    },
+    methods: {
+      ...mapActions(["addTodo"])
+    }
+  };
 </script>
 
 <style scoped>
