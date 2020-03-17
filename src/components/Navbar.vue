@@ -3,10 +3,10 @@
         <img class="navbar__logo" src="../assets/logo.png" alt="Logo"/>
         <ul class="navbar__ul">
             <li class="navbar__li">
-                <a href="#" class="navbar__a">Home</a>
+                <router-link to="/" class="navbar__a">Home</router-link>
             </li>
             <li class="navbar__li">
-                <a href="#" class="navbar__a">About</a>
+                <router-link to="/About" class="navbar__a">About</router-link>
             </li>
         </ul>
     </div>
@@ -21,7 +21,7 @@
 <style scoped>
     .navbar {
         display: flex;
-        background: grey;
+        background: darkgreen;
         align-items: center;
         height: 80px;
     }
